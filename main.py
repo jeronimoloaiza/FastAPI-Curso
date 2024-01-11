@@ -5,11 +5,13 @@ from pydantic import BaseModel
 #Creación de una aplicación en FastAPI:
 app = FastAPI()
 
+#Creación de modelo personalizado
 class Item(BaseModel):
     name: str
     price: float
     is_in_offer: Union[bool, None] = None
 
+#Métodos get
 @app.get('/')
 def read_root():
     return {"Hello": "World!"}
@@ -26,6 +28,7 @@ def read_item(item_id: int, name:Union[str, None] = None):
 def calcular(operando_1: float, operando_2: float):
     return {'suma': operando_1 + operando_2}
 
-@app.put('/items/{item_id}') #Put, para añadir
+#Métodos put
+@app.put('/items/{item_id}') #Put, para actualizar datos
 def update_item(item_id: int, item: Item):
     return {'item_name' : item.name, 'item_id': item_id, 'item_price': item.price}
