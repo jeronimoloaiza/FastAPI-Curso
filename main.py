@@ -1,8 +1,14 @@
 from typing import Union
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 #Creación de una aplicación en FastAPI:
 app = FastAPI()
+
+class item(BaseModel):
+    name: str
+    price: float
+    is_in_offer: Union[bool, None] = None
 
 @app.get('/')
 def read_root():
