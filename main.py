@@ -1,15 +1,10 @@
-from typing import Union
 from fastapi import FastAPI
-from pydantic import BaseModel
+from typing import Union
+from models.item_model import Item
+
 
 #Creación de una aplicación en FastAPI:
 app = FastAPI()
-
-#Creación de modelo personalizado
-class Item(BaseModel):
-    name: str
-    price: float
-    is_in_offer: Union[bool, None] = None
 
 #Métodos get
 @app.get('/')
