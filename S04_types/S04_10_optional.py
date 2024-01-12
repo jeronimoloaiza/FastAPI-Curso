@@ -10,3 +10,5 @@ def say_hi(name: Optional[str] = None):
         
 say_hi()
 say_hi('Jero')
+
+#Es lo mismo usar Optional, o usar Union[Something, None]. O directamente Something|None
