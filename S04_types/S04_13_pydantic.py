@@ -13,7 +13,7 @@ external_data = {
     'signup_ts' : datetime.strptime('2024-1-12 16:46', '%Y-%m-%d %H:%M'), #Para formato datetime
     'friends' : [1002, 1003, 1004]
 }
-user = User(**external_data )
+user = User(**external_data ) #Doble asterisco para separar las claves de las llaves
 
 print('------------------------------------------------------')
 print(user)
