@@ -1,6 +1,7 @@
 from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
+from uuid import uuid4 as uuid
 
 class ProductClass(BaseModel):
     id: Optional[str] = None
@@ -22,5 +23,6 @@ def obtener_productos():
 
 @app.post('/producto')
 def crear_producto(new_product: ProductClass):
+    new_product.id = str(uuid())
     product_list.append(new_product)
     return {'Mensaje': 'Producto creado satisfactoriamente'}
