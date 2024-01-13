@@ -48,9 +48,24 @@ def eliminar_profucto_por_id(product_id:str):
     resultado = list(filter(lambda p: p.id == product_id, product_list ))
 
     if len(resultado):
-        producto = resultado[0]
-        product_list.remove(producto)
+        producto_encontrado = resultado[0]
+        product_list.remove(producto_encontrado)
 
         return {'Mensaje' : f'El producto con la id {product_id} fue eliminado'}
+    
+    raise HTTPException(status_code=404, detail=f'El producto con la id {product_id} no fue encontrado')
+
+@app.put('/producto/{product_id}')
+def actualizar_producto(product_id: str, producto: ProductClass):
+    resultado = list(filter(lambda p: p.id == product_id, product_list ))
+
+    if len(resultado):
+        producto_encontrado = resultado[0]
+
+        producto_encontrado.nombre = producto.nombre
+        producto_encontrado.precio_venta = producto.precio_venta
+        producto_encontrado.proveedor = producto.proveedor
+
+        return producto_encontrado
     
     raise HTTPException(status_code=404, detail=f'El producto con la id {product_id} no fue encontrado')
