@@ -4,4 +4,4 @@ app = FastAPI()
 
 @app.get('/')
 async def index():
-    return {'Mensaje': 'Acceso satisfactorio'}
+    return {'Mensaje':'Acceso satisfactorio'}
